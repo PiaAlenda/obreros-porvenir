@@ -32,10 +32,10 @@ const InfoForm = () => {
           <h2 className="info-form-title">Este es el comienzo de tu próximo gran logro</h2>
         <div className="info-form-content">
           <div className="form-image">
-            <img src="/public/assets/img/alumnos.png" alt="Estudiantes" />
+            <img src="/assets/img/alumnos.png" alt="Estudiantes" />
             <div className="recognition-badge">
                <div className="footer-logo">
-              <img src="public/assets/icons/LOGO ESCUELA.png" alt="Obreros del Provenir" />
+              <img src="/assets/icons/LOGO ESCUELA.png" alt="Obreros del Provenir" />
               </div>
               <div className="recognition-text">
                 <strong>

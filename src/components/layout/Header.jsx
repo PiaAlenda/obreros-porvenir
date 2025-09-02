@@ -18,7 +18,7 @@ const Header = () => {
         <div className="container">
           <div className="header-bar">
             <div className="logo">
-              <img src="/public/assets/icons/LOGO ESCUELA.png" alt="Uni" />
+              <img src="/assets/icons/LOGO ESCUELA.png" alt="Uni" />
             </div>
 
             <div className="search-bar">

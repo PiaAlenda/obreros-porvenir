@@ -32,7 +32,7 @@ const Location = () => {
         onClick={handleToggle}
       >
         <video
-          src="/public/assets/img/Location.mp4"
+          src="/assets/img/Location.mp4"
           className="media-preview"
           autoPlay
           loop

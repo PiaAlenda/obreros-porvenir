@@ -30,7 +30,7 @@ const EducationalOffer = () => {
           onClick={() => handleClick("bach")}
         >
           <img
-            src="/public/assets/img/chicaCarpeta.jpeg"
+            src="/assets/img/chicaCarpeta.jpeg"
             alt="Alumna sosteniendo una carpeta amarilla"
             className="card-person-image"
           />
@@ -45,7 +45,7 @@ const EducationalOffer = () => {
         >
           <div className="card-background card-background-blue"></div>
           <img
-            src="/public/assets/img/chicoCarpeta.jpeg"
+            src="/assets/img/chicoCarpeta.jpeg"
             alt="Alumno haciendo un gesto de OK"
             className="card-person-image"
           />

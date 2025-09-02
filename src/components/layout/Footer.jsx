@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-section">
             <div className="footer-logo">
-              <img src="/public/assets/icons/LOGO ESCUELA.png" alt="Obreros del Provenir" />
+              <img src="/assets/icons/LOGO ESCUELA.png" alt="Obreros del Provenir" />
             </div>
             <p className="footer-description">
               Más de 60 años formando profesionales comprometidos con la excelencia académica y el desarrollo social.

@@ -49,7 +49,7 @@ const AboutUs = () => {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.7 }}
         >
-          <img src="/public/assets/img/about.png" alt="Aula moderna de la escuela" className="about-image" />
+          <img src="/assets/img/about.png" alt="Aula moderna de la escuela" className="about-image" />
         </motion.div>
 
         <motion.div
@@ -109,7 +109,7 @@ const AboutUs = () => {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.7, delay: 0.6 }}
         >
-          <img src="/public/assets/img/about.png" alt="Estudiantes interactuando en la escuela" className="about-image" />
+          <img src="/assets/img/about.png" alt="Estudiantes interactuando en la escuela" className="about-image" />
         </motion.div>
       </div>
     </section>

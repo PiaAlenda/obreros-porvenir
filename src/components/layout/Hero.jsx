@@ -30,7 +30,7 @@ const Hero = () => {
     <>
       <section className="hero">
         <video className="hero-video" autoPlay muted loop>
-          <source src="/public/assets/img/videoHero.mp4" type="video/mp4" />
+          <source src="/assets/img/videoHero.mp4" type="video/mp4" />
           Tu navegador no soporta video.
         </video>
 
