@@ -1,55 +1,53 @@
 /* --- Hero Principal --- */
 .hero {
+  position: relative;
   width: 100%;
-  max-width: 1400px;
-  height: 630px;
+  height: 100vh;        /* siempre ocupará toda la altura de la ventana */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  border-radius: 12px;
-  position: relative;
+  background-color: #000; /* fallback mientras carga el video */
 }
 
+/* Video de fondo */
 .hero-video {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 100vw;          /* ancho completo de la ventana */
+  height: 100vh;         /* altura completa de la ventana */
+  object-fit: cover;     /* cubrir toda la ventana sin deformar */
   z-index: 1;
   filter: brightness(0.6);
-  border-radius: 12px;
 }
 
+/* Contenido centrado encima del video */
 .hero-content {
   position: relative;
   z-index: 2;
   text-align: center;
   color: #ffffff;
   padding: 0 20px;
-  margin-top: 150px;
+  max-width: 1200px;     /* evita que el texto se expanda demasiado en pantallas gigantes */
 }
 
+/* Título y texto */
 .hero-title {
   font-size: 3.5rem;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #ffffff;
 }
 
 .hero-text {
   font-size: 1.3rem;
   margin-bottom: 40px;
   max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
   line-height: 1.6;
-  color: #ffffff;
 }
 
+/* Botones */
 .hero-buttons {
   display: flex;
   gap: 25px;
@@ -69,16 +67,16 @@
 
 .primary-btn {
   background-color: #f5c518;
-  color: #000000;
+  color: #000;
 }
 
 .primary-btn:hover {
- transform: translateY(-5px);
+  transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .secondary-btn {
-  background-color:#7a0d0b;
+  background-color: #7a0d0b;
   color: #fff;
 }
 
@@ -87,7 +85,7 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* --- Slider debajo del video --- */
+/* Slider debajo del video */
 .hero-bottom-slider {
   width: 100%;
   max-width: 1400px;
@@ -128,45 +126,153 @@
   object-fit: contain;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* --- Responsive Celulares --- */
+@media (max-width: 480px) {
+  .hero {
+    height: 600px;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-text {
+    font-size: 0.9rem;
+    max-width: 90%;
+    margin: 0 auto 20px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .hero-buttons .hero-btn {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
   .slider-link {
-    font-size: 1rem;
-    padding: 4px 8px;
+    font-size: 0.9rem;
+    padding: 3px 6px;
+    gap: 6px;
   }
+
   .slider-icon {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
   }
-  .hero-bottom-slider {
-    margin: 10px auto 30px;
+}
+
+/* --- Responsive Tablets --- */
+@media (min-width: 481px) and (max-width: 768px) {
+  .hero {
+    height: 500px;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .hero-text {
+    font-size: 1rem;
+    max-width: 90%;
+    margin: 0 auto 25px;
   }
 
   .hero-buttons {
     flex-direction: row;
-    gap: 10px;          
+    gap: 10px;
     justify-content: center;
-    flex-wrap: wrap;     
+    flex-wrap: wrap;
   }
 
   .hero-buttons .hero-btn {
-    flex: 1 1 auto;      
-    padding: 10px 20px;   
-    min-width: 120px;     
+    flex: 1 1 auto;
+    padding: 10px 20px;
+    min-width: 120px;
   }
 
-  .hero {
-    height: 500px;
-  }
-  .hero-title {
-    font-size: 2.2rem;
-  }
-  .hero-text {
+  .slider-link {
     font-size: 1rem;
+    padding: 4px 8px;
+  }
+
+  .slider-icon {
+    width: 18px;
+    height: 18px;
   }
 }
 
+/* --- Laptops --- */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero {
+    height: 550px;
+  }
 
+  .hero-title {
+    font-size: 2.8rem;
+  }
 
+  .hero-text {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 30px;
+  }
 
+  .hero-buttons {
+    gap: 15px;
+  }
 
+  .hero-buttons .hero-btn {
+    padding: 12px 25px;
+    font-size: 0.95rem;
+    min-width: 140px;
+  }
+
+  .slider-link {
+    font-size: 1.1rem;
+    padding: 5px 10px;
+  }
+
+  .slider-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* --- Pantallas grandes >1600px --- */
+@media (min-width: 1600px) {
+  .hero {
+    height: 100vh;       /* ocupa toda la pantalla */
+  }
+
+  .hero-content {
+    max-width: 1600px;   /* no se quede muy estrecho */
+  }
+
+  .hero-title {
+    font-size: 4.5rem;
+  }
+
+  .hero-text {
+    font-size: 1.5rem;
+    max-width: 1000px;
+  }
+
+  .hero-buttons .hero-btn {
+    padding: 16px 40px;
+    font-size: 1.2rem;
+  }
+
+  .slider-link {
+    font-size: 1.3rem;
+    padding: 8px 16px;
+  }
+
+  .slider-icon {
+    width: 28px;
+    height: 28px;
+  }
+}

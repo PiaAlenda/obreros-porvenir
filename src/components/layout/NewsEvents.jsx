@@ -3,14 +3,14 @@ import "../../styles/components/NewsEvents.css"
 const NewsEvents = () => {
   const news = [
     {
-      image: "/assets/img/bienvenido.png",
+      image: "/assets/img/bienvenido.webp",
       title: "¡BIENVENIDO UN NUEVO CAPÍTULO PARA LA UNIVERSIDAD!",
       category: "INSTITUCIONAL",
       date: "28 AGOSTO 2024",
       excerpt: "Nueva etapa institucional para nuestra universidad...",
     },
     {
-      image: "/assets/img/solidaridad.png",
+      image: "/assets/img/solidaridad.webp",
       title: "EN EL DÍA NACIONAL DE LA SOLIDARIDAD",
       category: "NOTICIAS",
       date: "26 AGOSTO 2024",
@@ -20,14 +20,14 @@ const NewsEvents = () => {
 
   const events = [
     {
-      image: "/assets/img/invitacion.png",
+      image: "/assets/img/invitacion.webp",
       title: "INVITACIÓN AL EVENTO",
       category: "EVENTOS",
       date: "27 AGOSTO 2024",
       description: "Charla de teletrabajo en tiempos actuales",
     },
     {
-      image: "/assets/img/seminario.png",
+      image: "/assets/img/seminario.webp",
       title: '"SEMINARIO 2024"',
       category: "EVENTOS",
       date: "27 AGOSTO 2024",
