@@ -1,0 +1,172 @@
+/* --- Hero Principal --- */
+.hero {
+  width: 100%;
+  max-width: 1400px;
+  height: 630px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 12px;
+  position: relative;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  filter: brightness(0.6);
+  border-radius: 12px;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #ffffff;
+  padding: 0 20px;
+  margin-top: 150px;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.hero-text {
+  font-size: 1.3rem;
+  margin-bottom: 40px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  color: #ffffff;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-btn {
+  padding: 14px 35px;
+  font-size: 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.primary-btn {
+  background-color: #f5c518;
+  color: #000000;
+}
+
+.primary-btn:hover {
+ transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.secondary-btn {
+  background-color:#7a0d0b;
+  color: #fff;
+}
+
+.secondary-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Slider debajo del video --- */
+.hero-bottom-slider {
+  width: 100%;
+  max-width: 1400px;
+  overflow: hidden;
+  margin: 35px auto;
+  padding: 10px 0;
+}
+
+.slider-track {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
+.slider-link {
+  display: flex;
+  align-items: center;
+  gap: 8px; 
+  color: #5b5b5b;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  white-space: nowrap;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.slider-link:hover {
+  background-color: #f5c518;
+  color: #222;
+  transform: scale(1.1);
+}
+
+.slider-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .slider-link {
+    font-size: 1rem;
+    padding: 4px 8px;
+  }
+  .slider-icon {
+    width: 18px;
+    height: 18px;
+  }
+  .hero-bottom-slider {
+    margin: 10px auto 30px;
+  }
+
+  .hero-buttons {
+    flex-direction: row;
+    gap: 10px;          
+    justify-content: center;
+    flex-wrap: wrap;     
+  }
+
+  .hero-buttons .hero-btn {
+    flex: 1 1 auto;      
+    padding: 10px 20px;   
+    min-width: 120px;     
+  }
+
+  .hero {
+    height: 500px;
+  }
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  .hero-text {
+    font-size: 1rem;
+  }
+}
+
+
+
+
+
