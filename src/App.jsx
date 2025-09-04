@@ -4,7 +4,7 @@ import About from "./components/layout/About"
 import EducationalOffer from "./components/layout/EducationalOffer"
 import InfoForm from "./components/layout/InfoForm"
 import Location from "./components/layout/Location"   
-import ImageSlider from "./components/layout/ImageSlider"
+import Programs from "./components/layout/Programs"
 import NewsEvents from "./components/layout/NewsEvents"
 import Footer from "./components/layout/Footer"
 import "./styles/Global.css"
@@ -16,7 +16,7 @@ function App() {
       <Hero />
       <About/>
       <EducationalOffer />
-      <ImageSlider />
+      <Programs />
       <NewsEvents />
        <Location/>
       <InfoForm />

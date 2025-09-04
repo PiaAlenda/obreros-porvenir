@@ -1,36 +1,33 @@
-/* --- Hero Principal --- */
 .hero {
   position: relative;
   width: 100%;
-  height: 100vh;        /* siempre ocupará toda la altura de la ventana */
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background-color: #000; /* fallback mientras carga el video */
+  background-color: #000;
 }
 
-/* Video de fondo */
 .hero-video {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;          /* ancho completo de la ventana */
-  height: 100vh;         /* altura completa de la ventana */
-  object-fit: cover;     /* cubrir toda la ventana sin deformar */
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
   z-index: 1;
   filter: brightness(0.6);
 }
 
-/* Contenido centrado encima del video */
 .hero-content {
   position: relative;
   z-index: 2;
   text-align: center;
   color: #ffffff;
   padding: 0 20px;
-  max-width: 1200px;     /* evita que el texto se expanda demasiado en pantallas gigantes */
+  max-width: 1200px;
 }
 
 /* Título y texto */
@@ -38,6 +35,8 @@
   font-size: 3.5rem;
   font-weight: bold;
   margin-bottom: 20px;
+  /*background-color: rgb(122, 13, 11,0.5);*/
+  border-radius: 1rem;
 }
 
 .hero-text {
@@ -103,7 +102,7 @@
 .slider-link {
   display: flex;
   align-items: center;
-  gap: 8px; 
+  gap: 8px;
   color: #5b5b5b;
   text-decoration: none;
   font-size: 1.2rem;
@@ -126,14 +125,20 @@
   object-fit: contain;
 }
 
-/* --- Responsive Celulares --- */
+/* Responsive Celulares */
 @media (max-width: 480px) {
-  .hero {
-    height: 600px;
+  .hero-video {
+    height: 120vh; 
   }
-
+  
+  .hero {
+    height: 700px;
+  }
+  
   .hero-title {
+    margin-top: 100px;
     font-size: 1.8rem;
+    margin-top: 120px;
   }
 
   .hero-text {
@@ -143,12 +148,15 @@
   }
 
   .hero-buttons {
-    flex-direction: column;
+    flex-direction: row; 
     gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap; 
   }
 
   .hero-buttons .hero-btn {
-    width: 100%;
+    width: auto;
+    flex-grow: 1;
     padding: 8px 12px;
     font-size: 0.9rem;
   }
@@ -165,7 +173,7 @@
   }
 }
 
-/* --- Responsive Tablets --- */
+/* Responsive Tablets */
 @media (min-width: 481px) and (max-width: 768px) {
   .hero {
     height: 500px;
@@ -205,7 +213,7 @@
   }
 }
 
-/* --- Laptops --- */
+/* Laptops */
 @media (min-width: 769px) and (max-width: 1024px) {
   .hero {
     height: 550px;
@@ -242,14 +250,14 @@
   }
 }
 
-/* --- Pantallas grandes >1600px --- */
+/* Pantallas grandes >1600px */
 @media (min-width: 1600px) {
   .hero {
-    height: 100vh;       /* ocupa toda la pantalla */
+    height: 100vh;
   }
 
   .hero-content {
-    max-width: 1600px;   /* no se quede muy estrecho */
+    max-width: 1600px;
   }
 
   .hero-title {

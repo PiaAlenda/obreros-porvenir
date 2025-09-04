@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../../styles/components/ImageSlider.css"; 
+import "../../styles/components/Programs.css";
 
 const courses = [
   { id: 1, image: "/assets/icons/iconos administracion contable.png", ano: "2 Años", title: "Administración Contable", description: "Aprende a gestionar la contabilidad de una empresa, liquidación de..." },
@@ -14,32 +14,36 @@ const courses = [
   { id: 10, image: "/assets/icons/iconos torneria mecanica.png", ano: "3 Años", title: "Tornería Mecánica", description: "Aprende a operar tornos mecánicos para la fabricación..." }
 ];
 
-const CourseGrid = () => {
+const Programs = () => {
   const [showAll, setShowAll] = useState(false);
+  const visibleCourses = showAll ? courses : courses.slice(0, 4);
 
-  const visibleCourses = showAll ? courses : courses.slice(0, 3);
+  const handleToggle = (event) => {
+    event.preventDefault(); 
+    setShowAll(!showAll);
+  };
 
   return (
     <section className="course-section">
-    <div className="title-container">
-    <h3 className="title">Programas Académicos &gt;</h3>
-    </div>
+      <div className="title-container">
+        <h2 className="title">Programas Académicos</h2>
+      </div>
       <div className="courses-grid">
         {visibleCourses.map((course) => (
           <div key={course.id} className="course-card">
             <div className="card-image-container">
               <span className="card-category-tag">{course.ano}</span>
-             <img src={course.image} alt={course.title} />
+              <img src={course.image} alt={course.title} />
             </div>
             <div className="card-info-content">
               <div className="card-header">
                 <h3 className="card-title">{course.title}</h3>
               </div>
               <p className="card-description">{course.description}</p>
-               <div className="card-spacer" />
+              <div className="card-spacer" />
               <button className="view-course-btn">Inscribirse</button>
               <a href="#" className="card-link">
-                Mas información<span>&rarr;</span>
+                Más información<span>&rarr;</span>
               </a>
             </div>
           </div>
@@ -49,7 +53,7 @@ const CourseGrid = () => {
       <div className="toggle-btn-container">
         <button
           className="toggle-btn"
-          onClick={() => setShowAll(!showAll)}
+          onClick={handleToggle} 
         >
           {showAll ? "Ver menos ▲" : "Ver más ▼"}
         </button>
@@ -58,4 +62,4 @@ const CourseGrid = () => {
   );
 };
 
-export default CourseGrid;
+export default Programs;

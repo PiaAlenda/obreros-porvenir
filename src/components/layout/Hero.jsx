@@ -35,7 +35,7 @@ const Hero = () => {
         </video>
 
         <div className="hero-content">
-          <h1 className="hero-title">Bienvenidos a Nuestra Escuela</h1>
+          <h1 className="hero-title">Obreros del Porvenir</h1>
           <p className="hero-text">
             Ofrecemos programas educativos para mayores de 20 años con enfoque profesional, flexible y moderno.
           </p>
