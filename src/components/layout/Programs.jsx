@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import "../../styles/components/Programs.css";
 
 const courses = [
@@ -16,31 +16,63 @@ const courses = [
 
 const Programs = () => {
   const [showAll, setShowAll] = useState(false);
+  const [visibleItems, setVisibleItems] = useState({});
+  const elementsRef = useRef([]);
+
   const visibleCourses = showAll ? courses : courses.slice(0, 4);
 
-  const handleToggle = (event) => {
-    event.preventDefault(); 
+  const handleToggle = (e) => {
+    e.preventDefault();
     setShowAll(!showAll);
   };
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.dataset.id;
+            setVisibleItems((prev) => ({ ...prev, [id]: true }));
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    elementsRef.current.forEach((el) => el && observer.observe(el));
+
+    return () => {
+      elementsRef.current.forEach((el) => el && observer.unobserve(el));
+    };
+  }, [showAll]);
+
   return (
     <section className="course-section">
-      <div className="title-container">
+      <div
+        className={`title-container ${visibleItems["title"] ? "fade-up" : ""}`}
+        data-id="title"
+        ref={(el) => (elementsRef.current[0] = el)}
+      >
         <h2 className="title">Programas Académicos</h2>
       </div>
+
       <div className="courses-grid">
-        {visibleCourses.map((course) => (
-          <div key={course.id} className="course-card">
+        {visibleCourses.map((course, index) => (
+          <div
+            key={course.id}
+            className={`course-card ${visibleItems[course.id] ? "fade-up" : ""}`}
+            style={{ animationDelay: `${0.1 * index}s` }}
+            data-id={course.id}
+            ref={(el) => (elementsRef.current[index + 1] = el)}
+          >
             <div className="card-image-container">
               <span className="card-category-tag">{course.ano}</span>
               <img src={course.image} alt={course.title} />
             </div>
             <div className="card-info-content">
-              <div className="card-header">
-                <h3 className="card-title">{course.title}</h3>
-              </div>
+              <h3 className="card-title">{course.title}</h3>
               <p className="card-description">{course.description}</p>
-              <div className="card-spacer" />
               <button className="view-course-btn">Inscribirse</button>
               <a href="#" className="card-link">
                 Más información<span>&rarr;</span>
@@ -51,10 +83,7 @@ const Programs = () => {
       </div>
 
       <div className="toggle-btn-container">
-        <button
-          className="toggle-btn"
-          onClick={handleToggle} 
-        >
+        <button className="toggle-btn" onClick={handleToggle}>
           {showAll ? "Ver menos ▲" : "Ver más ▼"}
         </button>
       </div>

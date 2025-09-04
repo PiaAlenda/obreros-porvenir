@@ -62,7 +62,7 @@ const Header = () => {
                       <span className="icon-with-arrow">
                         {dropdown.label === "" && (
                           <span className="user-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                               <circle cx="12" cy="8" r="4" />
                               <path d="M6 20c0-3.3 2.7-6 6-6s6 2.7 6 6" />
                             </svg>

@@ -5,7 +5,7 @@ import '../../styles/components/About.css';
 const AnimatedCounter = ({ end, duration = 2000 }) => {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 }); 
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
 
   useEffect(() => {
     if (isInView) {
@@ -29,7 +29,7 @@ const AnimatedCounter = ({ end, duration = 2000 }) => {
 const AboutUs = () => {
   return (
     <section className="about-us">
-      <div className="about-intro">
+      <header className="about-intro">
         <motion.h2
           initial={{ opacity: 0, y: -50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -39,32 +39,49 @@ const AboutUs = () => {
         >
           Nuestra Esencia
         </motion.h2>
-      </div>
+      </header>
 
       <div className="about-grid">
-        <motion.div
+        <motion.figure
           className="grid-item image-item"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.7 }}
         >
-          <img src="/assets/img/about.webp" alt="Aula moderna de la escuela" className="about-image" />
-        </motion.div>
+          <img
+            src="/assets/img/about.webp"
+            alt="Aula moderna de la escuela"
+            className="about-image"
+            loading="lazy"
+          />
+        </motion.figure>
 
-        <motion.div
+        <article
           className="grid-item counter-item"
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
+          as={motion.article}
         >
-          <h3 className="underline-animate underline-animate--fast"  style={{ color: '#800c0a' }}>Impulsando el Mañana</h3>
+          <motion.h3
+            className="underline-animate underline-animate--fast"
+            style={{ color: '#800c0a' }}
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
+            Impulsando el Mañana
+          </motion.h3>
 
-            <p>
-                Fundada en 1915, nuestra institución cuenta con más de 100 años de trayectoria, destacándose por la calidad educativa, 
-                el profesionalismo docente y talleres equipados que preparan a los egresados para sobresalir en el oficio elegido.
-            </p>
+          <motion.p
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+          >
+            Fundada en <strong>1915</strong>, nuestra institución educativa cuenta con más de 100 años de trayectoria,
+            destacándose por la calidad educativa, el profesionalismo docente y talleres equipados que preparan a los egresados
+            para sobresalir en el oficio elegido.
+          </motion.p>
 
           <div className="counter-container">
             <div className="counter-box">
@@ -76,21 +93,34 @@ const AboutUs = () => {
               <p className="counter-label">Especialidades</p>
             </div>
           </div>
-        </motion.div>
+        </article>
 
-        <motion.div
+        <article
           className="grid-item text-item"
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
         >
-          <h3 className="underline-animate underline-animate--slow" style={{ color: '#800c0a' }}>Por que elegirnos?</h3>
-          <p>
-            Nuestra Escuela tiene una larga trayectoria ofreciendo carreras cortas y cursos de especialización con una rápida salida laboral.
-            Esto, sumado al rol social de la misma, le dan acceso a capacitarse a personas de todas las edades y posibilidades económicas.
-          </p>
-            <div className="counter-container">
+          <motion.h3
+            className="underline-animate underline-animate--slow"
+            style={{ color: '#800c0a' }}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+          >
+            Por qué elegirnos?
+          </motion.h3>
+
+          <motion.p
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+          >
+            Nuestra Escuela tiene una larga trayectoria ofreciendo carreras cortas y cursos de especialización
+            con una rápida salida laboral. Esto, sumado al rol social de la misma, permite capacitarse a personas de todas
+            las edades y posibilidades económicas.
+          </motion.p>
+
+          <div className="counter-container">
             <div className="counter-box">
               <span className="counter-number"><AnimatedCounter end={30} /></span>
               <p className="counter-label">Aulas/Talleres</p>
@@ -100,17 +130,23 @@ const AboutUs = () => {
               <p className="counter-label">Profesores</p>
             </div>
           </div>
-        </motion.div>
+        </article>
 
-        <motion.div
+        <motion.figure
           className="grid-item image-item"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.7, delay: 0.6 }}
         >
-          <img src="/assets/img/about.webp" alt="Estudiantes interactuando en la escuela" className="about-image" />
-        </motion.div>
+          <img
+            src="/assets/img/about.webp"
+            alt="Estudiantes interactuando en la escuela"
+            className="about-image"
+            loading="lazy"
+          />
+        </motion.figure>
+
       </div>
     </section>
   );

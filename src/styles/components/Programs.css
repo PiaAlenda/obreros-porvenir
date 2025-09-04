@@ -11,9 +11,27 @@
   --transition-speed: 0.3s;
 }
 
+/* Animaciones */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fade-up 0.8s forwards;
+}
+
+/* Sección */
 .course-section {
   padding: 40px 20px;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .title {
@@ -21,26 +39,24 @@
   font-family: Arial, sans-serif;
   color: var(--color-primary);
   font-weight: 700;
-  text-align: left;
+  text-align: center;
   margin-bottom: 50px;
   position: relative;
-  margin-left: 90px;
 }
 
 .title::after {
   content: '';
   position: absolute;
-  left: 24%;
+  left: 50%;
   transform: translateX(-50%);
   bottom: -10px;
   width: 100px;
   height: 4px;
   background-color: #FFD700;
   border-radius: 2px;
-  font-family: Montsa; 
 }
 
-/* Grid de cursos */
+/* Grid */
 .courses-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(252px, 1fr));
@@ -51,7 +67,7 @@
   margin: 0 auto;
 }
 
-/* Tarjeta */
+/* Card */
 .course-card {
   background: var(--color-card-bg);
   border-radius: var(--card-border-radius);
@@ -59,7 +75,10 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  transform: translateY(30px);
+  opacity: 0;
   transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  cursor: pointer;
 }
 
 .course-card:hover {
@@ -67,7 +86,6 @@
   box-shadow: 0 12px 25px var(--shadow-hover);
 }
 
-/* Imagen */
 .card-image-container {
   position: relative;
   width: 100%;
@@ -83,7 +101,6 @@
   object-fit: contain;
 }
 
-/* Etiqueta categoría */
 .card-category-tag {
   position: absolute;
   top: 15px;
@@ -95,10 +112,8 @@
   font-weight: 700;
   color: #fff;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
-/* Contenido */
 .card-info-content {
   padding: 25px;
   display: flex;
@@ -122,30 +137,6 @@
   flex-grow: 1;
 }
 
-/* Detalles */
-.card-details-row {
-  display: flex;
-  gap: 20px;
-  padding: 12px 0 18px;
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
-  margin-bottom: 20px;
-}
-
-.detail-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.9rem;
-  color: var(--color-light);
-}
-
-.icon-placeholder {
-  font-size: 1.1rem;
-  color: var(--color-primary);
-}
-
-/* Botón principal */
 .view-course-btn {
   width: 100%;
   padding: 14px;
@@ -165,20 +156,14 @@
   box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
 
-/* Link adicional */
-.card-link,
-.more-info-btn {
+.card-link {
   text-decoration: none;
   font-weight: 600;
   font-size: 0.9rem;
   color: var(--color-light);
   margin-top: 10px;
-  gap: 5px;
-}
-
-.card-link:hover,
-.more-info-btn:hover {
-  color: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
 }
 
 .card-link span {
@@ -191,7 +176,10 @@
   transform: translateX(10px);
 }
 
-/* Botón toggle */
+.card-link:hover {
+  color: var(--color-primary);
+}
+
 .toggle-btn-container {
   text-align: center;
   margin-top: 50px;
@@ -216,75 +204,40 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .course-section {
-    padding: 20px 10px;
-  }
-
   .title {
-    margin-left: 0;
     font-size: 1.9rem;
     margin-bottom: 40px;
   }
-
-  .title::after {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
   .courses-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px; 
+    gap: 15px;
   }
-
-  .course-card {
-    min-width: unset;
-  }
-
   .card-image-container {
     height: 100px;
   }
-
   .card-image-container img {
     max-height: 60px;
   }
-
   .card-info-content {
     padding: 15px;
   }
-
   .card-title {
-    font-size: 1rem; 
+    font-size: 1rem;
     margin-bottom: 8px;
   }
-
   .card-description {
-    font-size: 0.8rem; 
-    margin-bottom: 15px;
-  }
-
-  .card-details-row {
-    flex-direction: column;
-    gap: 8px;
-    padding: 10px 0;
-    margin-bottom: 15px;
-  }
-
-  .detail-item {
     font-size: 0.8rem;
+    margin-bottom: 15px;
   }
-
   .view-course-btn {
     padding: 10px;
     font-size: 0.9rem;
   }
-
   .card-category-tag {
     font-size: 0.7rem;
     padding: 4px 10px;
   }
-
-  .card-link,
-  .more-info-btn {
+  .card-link {
     font-size: 0.8rem;
   }
 }

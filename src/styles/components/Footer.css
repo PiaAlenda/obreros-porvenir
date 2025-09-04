@@ -104,6 +104,24 @@
   color: #aaa;
 }
 
+/* redes sociales */
+.social-links {
+  display: flex; 
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.social-link img.social-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.social-link img.social-icon:hover {
+  transform: scale(1.1);
+}
+
 /* Responsividad */
 @media (max-width: 768px) {
   .footer-content {
@@ -112,7 +130,9 @@
   }
 
   .social-links {
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: start; 
+    gap: 15px; 
   }
 }
 
@@ -129,5 +149,10 @@
   .footer-contact p,
   .footer-links a {
     font-size: 15px;
+  }
+
+  .social-links {
+    justify-content: start; 
+    flex-wrap: wrap; 
   }
 }

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import "../../styles/components/InfoForm.css"
 
 const InfoForm = () => {
@@ -12,13 +12,11 @@ const InfoForm = () => {
     tipoCarrera: "",
     carrera: "",
     modalidad: "",
+    localidad: "",
   })
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = (e) => {
@@ -26,16 +24,47 @@ const InfoForm = () => {
     console.log("Form submitted:", formData)
   }
 
+  const titleRef = useRef(null)
+  const formRef = useRef(null)
+  const imgRef = useRef(null)
+  const inputsRef = useRef([])
+
+  useEffect(() => {
+    const allElements = [
+      titleRef.current,
+      formRef.current,
+      imgRef.current,
+      ...inputsRef.current
+    ].filter(Boolean)
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show")
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.2 }
+    )
+
+    allElements.forEach((el) => observer.observe(el))
+  }, [])
+
   return (
     <section className="info-form-section">
-      <div className="container">
-          <h2 className="info-form-title">Este es el comienzo de tu próximo gran logro</h2>
+      <div id="inscripciones" className="container">
+        <h2 ref={titleRef} className="info-form-title scroll-reveal delay-0">
+          Este es el comienzo de tu próximo gran logro
+        </h2>
+
         <div className="info-form-content">
-          <div className="form-image">
+          <div className="form-image scroll-reveal delay-2" ref={imgRef}>
             <img src="/assets/img/alumnos.webp" alt="Estudiantes" />
             <div className="recognition-badge">
-               <div className="footer-logo">
-              <img src="/assets/icons/LOGO ESCUELA.png" alt="Obreros del Provenir" />
+              <div className="footer-logo">
+                <img src="/assets/icons/LOGO ESCUELA.png" alt="Obreros del Provenir" />
               </div>
               <div className="recognition-text">
                 <strong>
@@ -47,93 +76,77 @@ const InfoForm = () => {
             </div>
           </div>
 
-          <div className="form-container">
+          <div className="form-container scroll-reveal delay-1" ref={formRef}>
             <div className="form-header">
               <div className="question-icon">?</div>
               <div className="form-title">
-                <h2>
-                  ¿NECESITÁS
-                  <br />
-                  INFORMACIÓN?
-                </h2>
+                <h2>¿NECESITÁS<br/>INFORMACIÓN?</h2>
                 <p>Completá tus datos y un asesor se comunicará en breve para ayudarte.</p>
               </div>
             </div>
 
             <form className="info-form" onSubmit={handleSubmit}>
               <div className="form-row">
-                <input
-                  type="text"
-                  name="nombre"
-                  placeholder="Nombre"
-                  value={formData.nombre}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  type="text"
-                  name="apellido"
-                  placeholder="Apellido"
-                  value={formData.apellido}
-                  onChange={handleChange}
-                  required
-                />
+                {["nombre","apellido"].map((name, idx) => (
+                  <input
+                    key={name}
+                    type="text"
+                    name={name}
+                    placeholder={name === "nombre" ? "Nombre" : "Apellido"}
+                    value={formData[name]}
+                    onChange={handleChange}
+                    ref={(el) => (inputsRef.current[idx] = el)}
+                    required
+                  />
+                ))}
               </div>
 
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
+              {["email","telefono","localidad"].map((name, idx) => (
+                <input
+                  key={name}
+                  type={name === "email" ? "email" : "text"}
+                  name={name}
+                  placeholder={
+                    name === "email"
+                      ? "Email"
+                      : name === "telefono"
+                      ? "Teléfono celular (Ejemplo: 11 XXXXXXX)"
+                      : "Localidad de residencia"
+                  }
+                  value={formData[name]}
+                  onChange={handleChange}
+                  ref={(el) => (inputsRef.current[idx+2] = el)}
+                  required={name!=="localidad"}
+                />
+              ))}
 
-              <input
-                type="tel"
-                name="telefono"
-                placeholder="Teléfono celular (Ejemplo: 11 XXXXXXX)"
-                value={formData.telefono}
-                onChange={handleChange}
-                required
-              />
-
-              <input
-                type="text"
-                name="localidad"
-                placeholder="Localidad de residencia"
-                value={formData.localidad}
-                onChange={handleChange}
-              />
-
-              <select name="tipoCarrera" value={formData.tipoCarrera} onChange={handleChange} required>
-                <option value="">Tipo de carrera</option>
-                <option value="grado">Grado</option>
-                <option value="posgrado">Posgrado</option>
-                <option value="tecnicatura">Tecnicatura</option>
-              </select>
-
-              <select name="carrera" value={formData.carrera} onChange={handleChange} required>
-                <option value="">Carrera</option>
-                <option value="medicina">Medicina</option>
-                <option value="derecho">Derecho</option>
-                <option value="psicologia">Psicología</option>
-                <option value="administracion">Administración</option>
-              </select>
-
-              <select name="modalidad" value={formData.modalidad} onChange={handleChange} required>
-                <option value="">Modalidad</option>
-                <option value="presencial">Presencial</option>
-                <option value="virtual">Virtual</option>
-                <option value="hibrida">Híbrida</option>
-              </select>
-
-              <div className="captcha-container">
+              {[
+                { name: "tipoCarrera", options: ["Grado","Posgrado","Tecnicatura"] },
+                { name: "carrera", options: ["Medicina","Derecho","Psicología","Administración"] },
+                { name: "modalidad", options: ["Presencial","Virtual","Híbrida"] }
+              ].map((select, idx) => (
+                <select
+                  key={select.name}
+                  name={select.name}
+                  value={formData[select.name]}
+                  onChange={handleChange}
+                  ref={(el) => (inputsRef.current[idx+5] = el)}
+                  required
+                >
+                  <option value="">{select.name === "modalidad" ? "Modalidad" : select.name === "tipoCarrera" ? "Tipo de carrera" : "Carrera"}</option>
+                  {select.options.map(opt => (
+                    <option key={opt.toLowerCase()} value={opt.toLowerCase()}>{opt}</option>
+                  ))}
+                </select>
+              ))}
+    
+                 {/*captcha
+                <div className="captcha-container" ref={(el) => (inputsRef.current[8]=el)}>
                 <input type="checkbox" id="captcha" required />
                 <label htmlFor="captcha">No soy un robot</label>
-              </div>
+              </div> */}
 
-              <button type="submit" className="btn-secondary-submit">
+              <button type="submit" className="btn-secondary-submit" ref={(el) => (inputsRef.current[9]=el)}>
                 SOLICITAR INFORMACIÓN
               </button>
             </form>

@@ -45,20 +45,20 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="footer-section">
-            <h3 className="footer-title">Síguenos</h3>
-            <div className="social-links">
-              <a href="#" className="social-link">
-                Facebook
-              </a>
-              <a href="#" className="social-link">
-                Instagram
-              </a>
-              <a href="#" className="social-link">
-                LinkedIn
-              </a>
-            </div>
+         <div className="footer-section">
+          <h3 className="footer-title">Síguenos</h3>
+          <div className="social-links">
+            <a href="#" className="social-link">
+              <img src="/assets/icons/iconFB.png" alt="Facebook" className="social-icon" />
+            </a>
+            <a href="#" className="social-link">
+              <img src="/assets/icons/iconIG.png" alt="Instagram" className="social-icon" />
+            </a>
+            <a href="#" className="social-link">
+              <img src="/assets/icons/iconLK.png" alt="LinkedIn" className="social-icon" />
+            </a>
           </div>
+      </div>
         </div>
 
         <div className="footer-bottom">
