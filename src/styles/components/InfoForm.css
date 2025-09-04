@@ -4,7 +4,6 @@
 
 .info-form-section {
   padding: 80px 0;
-  overflow-x: hidden; 
 }
 
 .info-form-title {
@@ -22,8 +21,6 @@
   grid-template-columns: 1fr 1fr;
   gap: 60px;
   align-items: center;
-  width: 100%;
-  overflow-x: hidden; 
 }
 
 .form-image {
